@@ -9,6 +9,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Lokaltog/vim-distinguished'
 " The following are examples of different formats supported.
@@ -50,6 +51,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 syntax on
+syntax enable
 set number
 set showcmd
 set hlsearch
@@ -71,4 +73,3 @@ inoremap { {}<ESC>i
 inoremap < <><ESC>i
 inoremap ' ''<ESC>i
 inoremap " ""<ESC>i
-
