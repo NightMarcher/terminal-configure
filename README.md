@@ -1,7 +1,7 @@
 # TerminalConfigure
 
-## 1.Install git, vim and tmux
-    sudo apt install git vim tmux
+## 1.Install git, vim tmux and exuberant-ctags(for tagbar, a bundle of vim)
+    sudo apt install git vim exuberant-ctags tmux
 ## 2.Setup Vundle
   [Vundle](https://github.com/VundleVim/Vundle.vim) is short for Vim Bundle and is one of the most popular Vim plugin managing tools.
 
