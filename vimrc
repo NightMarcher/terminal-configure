@@ -1,3 +1,4 @@
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
@@ -12,6 +13,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Lokaltog/vim-distinguished'
+Bundle 'majutsushi/tagbar'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
@@ -70,6 +72,11 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 set smartindent
+
+nnoremap <silent> <F9> :TagbarToggle<CR>
+let g:tagbar_left = 0
+let g:tagbar_width = 30
+let g:tagbar_autofocus = 1
 
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
