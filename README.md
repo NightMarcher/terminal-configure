@@ -12,6 +12,6 @@
 ## 4.Install Vim plugins
   Launch Vim and run `PluginInstall` under command mode
 ## 5.Reload Tmux config
-  Start tmux in terminal, type in Ctrl + b (prefix) and r (reload)
+  Start tmux in terminal, type in Ctrl + g (prefix) and r (reload)
 ## 6.What it looks on my Ubuntu 18.04.1 LTS with default terminal configuration
   ![rendering](https://github.com/NightMarcher/MyVimConfigure/blob/master/rendering.png?raw=true "rendering")
