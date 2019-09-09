@@ -3,6 +3,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/share/powerline/powerline/bindings/vim
 
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -11,8 +12,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'Lokaltog/vim-distinguished'
+Plugin 'easymotion/vim-easymotion'
 Bundle 'majutsushi/tagbar'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -52,24 +53,40 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-set termencoding=utf-8
-set encoding=utf-8
-set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
-
 syntax on
 syntax enable
-set number
+filetype indent on
+
+set t_Co=256
+set encoding=utf-8
+set background=dark
+set visualbell
+set autoread
+set undofile
+set autochdir
+set ruler
 set showcmd
+set showmode
+set laststatus=2
+
+set wrap
+set number
 set hlsearch
 set showmatch
+set incsearch
+set smartcase
 set cursorline
+set scrolloff=5
+set sidescrolloff=15
 set relativenumber
 colorscheme distinguished
 
+set paste
 set smarttab
-set expandtab
 set tabstop=4
 set shiftwidth=4
+set expandtab
+set softtabstop=4
 set autoindent
 set smartindent
 
