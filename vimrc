@@ -62,7 +62,9 @@ set encoding=utf-8
 set background=dark
 set visualbell
 set autoread
-set undofile
+set nobackup
+set noundofile
+set noswapfile
 set autochdir
 set ruler
 set showcmd
