@@ -64,7 +64,7 @@ set visualbell
 set autoread
 set nobackup
 set noundofile
-set noswapfile
+set swapfile
 set autochdir
 set ruler
 set showcmd
@@ -78,12 +78,12 @@ set showmatch
 set incsearch
 set smartcase
 set cursorline
-set scrolloff=5
+set scrolloff=0
 set sidescrolloff=15
 set relativenumber
 colorscheme distinguished
 
-set paste
+set nopaste
 set smarttab
 set tabstop=4
 set shiftwidth=4
