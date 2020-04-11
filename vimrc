@@ -12,9 +12,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
-Plugin 'Lokaltog/vim-distinguished'
-Plugin 'easymotion/vim-easymotion'
+Plugin 'nanotech/jellybeans.vim'
 Bundle 'majutsushi/tagbar'
+Plugin 'easymotion/vim-easymotion'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
@@ -65,7 +65,6 @@ set autoread
 set nobackup
 set noundofile
 set swapfile
-set autochdir
 set ruler
 set showcmd
 set showmode
@@ -81,7 +80,7 @@ set cursorline
 set scrolloff=0
 set sidescrolloff=15
 set relativenumber
-colorscheme distinguished
+colorscheme jellybeans
 
 set nopaste
 set smarttab

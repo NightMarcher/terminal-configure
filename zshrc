@@ -105,5 +105,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 setopt no_nomatch
-alias jpy='jupyter lab'
+alias jpy="jupyter lab"
+alias fp="find . -name '*.py' | xargs grep -n --color"
 
