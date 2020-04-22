@@ -1,4 +1,3 @@
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
@@ -10,11 +9,16 @@ call vundle#begin()
 " call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
+Bundle 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
-Plugin 'nanotech/jellybeans.vim'
-Bundle 'majutsushi/tagbar'
+Plugin 'tell-k/vim-autopep8'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'jiangmiao/auto-pairs'
+
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'Yggdroot/indentLine'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
@@ -91,15 +95,15 @@ set softtabstop=4
 set autoindent
 set smartindent
 
+
+" shortcuts
+
+autocmd FileType python noremap <buffer> <F7> :call Autopep8()<CR>
+let g:autopep8_disable_show_diff=0
+
+map <F8> :IndentLinesToggle<cr>
+
 nnoremap <silent> <F9> :TagbarToggle<CR>
 let g:tagbar_left = 0
 let g:tagbar_width = 30
 let g:tagbar_autofocus = 1
-
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {}<ESC>i
-inoremap < <><ESC>i
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
-

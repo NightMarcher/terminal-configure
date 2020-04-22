@@ -1,10 +1,11 @@
-# TerminalConfigure
+# Terminal Configure
 
 ## 0.First, clone this repositorie
 	sudo apt install git
-	git clone git@github.com:NightMarcher/TerminalConfigure.git
-## 1.Install tmux, vim, zsh and exuberant-ctags(for tagbar, a bundle of vim)
+	git clone git@github.com:NightMarcher/terminal-configure.git
+## 1.Install tmux, vim, zsh, autopep8 and exuberant-ctags(for tagbar, a bundle of vim)
 	sudo apt install tmux vim zsh exuberant-ctags
+    sudo pip install autopep8
 ## 2.Install oh-my-zsh
 	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O-)"
 	chsh -s /bin/zsh
