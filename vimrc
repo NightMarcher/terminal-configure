@@ -101,9 +101,11 @@ set smartindent
 autocmd FileType python noremap <buffer> <F7> :call Autopep8()<CR>
 let g:autopep8_disable_show_diff=0
 
-map <F8> :IndentLinesToggle<cr>
+map <F8> :IndentLinesToggle<CR>
 
 nnoremap <silent> <F9> :TagbarToggle<CR>
 let g:tagbar_left = 0
 let g:tagbar_width = 30
 let g:tagbar_autofocus = 1
+
+map <F10> :Gdiff<CR>

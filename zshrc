@@ -107,4 +107,4 @@ source $ZSH/oh-my-zsh.sh
 setopt no_nomatch
 alias jpy="jupyter lab"
 alias fp="find . -name '*.py' | xargs grep -n --color"
-
+alias fj="find . -name '*.js' | xargs grep -n --color"
