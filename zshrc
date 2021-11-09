@@ -71,7 +71,6 @@ ZSH_THEME="myagnoster"
 plugins=(
     colored-man-pages
     git 
-    pipenv
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -105,6 +104,17 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 setopt no_nomatch
+
 alias jpy="jupyter lab"
 alias fpg="find . -name '*.py' | xargs grep -n --color"
 alias pg="ps -ef | grep"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="/usr/local/go/bin:$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
