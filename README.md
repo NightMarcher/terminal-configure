@@ -7,7 +7,7 @@
 	sudo apt install tmux vim zsh exuberant-ctags
     sudo pip install autopep8
 ## 2.Install oh-my-zsh
-	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O-)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	chsh -s /bin/zsh
 ## 3.Install powerline fonts
 	git clone https://github.com/powerline/fonts.git --depth=1
