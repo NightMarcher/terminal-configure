@@ -2,7 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=/usr/local/share/powerline/powerline/bindings/vim
+" set rtp+=/usr/local/share/powerline/powerline/bindings/vim
 
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 Bundle 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
-Plugin 'tell-k/vim-autopep8'
+" Plugin 'tell-k/vim-autopep8'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'jiangmiao/auto-pairs'
 
@@ -98,8 +98,8 @@ set smartindent
 
 " shortcuts
 
-autocmd FileType python noremap <buffer> <F7> :call Autopep8()<CR>
-let g:autopep8_disable_show_diff=0
+" autocmd FileType python noremap <buffer> <F7> :call Autopep8()<CR>
+" let g:autopep8_disable_show_diff=0
 
 map <F8> :IndentLinesToggle<CR>
 

@@ -5,7 +5,6 @@
 	git clone git@github.com:NightMarcher/terminal-configure.git
 ## 1.Install tmux, vim, zsh, autopep8 and exuberant-ctags(for tagbar, a bundle of vim)
 	sudo apt install tmux vim zsh exuberant-ctags
-    sudo pip install autopep8
 ## 2.Install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	chsh -s /bin/zsh
