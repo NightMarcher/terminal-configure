@@ -2,8 +2,8 @@
 
 ## 0.First, clone this repositorie
 	sudo apt install git
-	git clone git@github.com:NightMarcher/terminal-configure.git
-## 1.Install tmux, vim, zsh, autopep8 and exuberant-ctags(for tagbar, a bundle of vim)
+	git clone https://github.com/NightMarcher/terminal-configure.git
+## 1.Install tmux, vim, zsh and exuberant-ctags(for tagbar, a bundle of vim)
 	sudo apt install tmux vim zsh exuberant-ctags
 ## 2.Install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -19,7 +19,6 @@
     cp tmux.conf ~/.tmux.conf
     cp vimrc ~/.vimrc
     cp zshrc ~/.zshrc
-    cp myagnoster.zsh-theme ~/.oh-my-zsh/custom/themes
 ## 6.Install Vundle
   [Vundle](https://github.com/VundleVim/Vundle.vim) is short for Vim Bundle and is one of the most popular Vim plugin managing tools.
 
