@@ -25,7 +25,5 @@
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ## 7.Install Vim plugins
   Launch Vim and run `PluginInstall` under command mode
-## 8.Reload Tmux config
-  Start tmux in terminal, type in Ctrl + g (prefix) and r (reload)
-## 9.What it looks on my Ubuntu 18.04 LTS
+## 8.What it looks on my Ubuntu 18.04 LTS
   ![rendering](https://github.com/NightMarcher/MyVimConfigure/blob/master/rendering.png?raw=true "rendering")

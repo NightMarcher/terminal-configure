@@ -59,15 +59,19 @@ filetype plugin indent on    " required
 syntax on
 syntax enable
 filetype indent on
-
+colorscheme jellybeans
 set t_Co=256
 set encoding=utf-8
 set background=dark
-set visualbell
+
 set autoread
 set nobackup
-set noundofile
 set swapfile
+set autochdir
+set noundofile
+set visualbell
+" set spell spelllang=en_us
+
 set ruler
 set showcmd
 set showmode
@@ -76,23 +80,23 @@ set laststatus=2
 set wrap
 set number
 set hlsearch
-set showmatch
 set incsearch
+set linebreak
+set scrolloff=0
+set showmatch
 set smartcase
 set cursorline
-set scrolloff=0
 set sidescrolloff=15
 set relativenumber
-colorscheme jellybeans
 
 set nopaste
+set tabstop=2
 set smarttab
-set tabstop=4
-set shiftwidth=4
 set expandtab
-set softtabstop=4
 set autoindent
+set shiftwidth=4
 set smartindent
+set softtabstop=2
 
 
 " shortcuts
