@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "lab"
+version = "0.1.0"
+description = "Python lab env for Bryan"
+authors = ["BryanLee <bryanlee@126.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+faker = "*"
+fastapi-efficient-sql = "*"
+jupyterlab = "*"
+openpyxl = "*"
+pandas = "*"
+py-redis = "*"
+requests = "*"
+seaborn = "*"
+tqdm = "*"
+
+[[tool.poetry.source]]
+name = "aliyun"
+default = true
+url = "http://mirrors.aliyun.com/pypi/simple"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
