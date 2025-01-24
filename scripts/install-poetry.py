@@ -23,6 +23,14 @@ script to alternatives, consider maintaining a local copy as part of your infras
 
 For full documentation, visit https://python-poetry.org/docs/#installation.
 """
+import sys
+
+
+# Eager version check so we fail nicely before possible syntax errors
+if sys.version_info < (3, 6):  # noqa: UP036
+    sys.stdout.write("Poetry installer requires Python 3.6 or newer to run!\n")
+    sys.exit(1)
+
 
 import argparse
 import json
@@ -30,7 +38,6 @@ import os
 import re
 import shutil
 import subprocess
-import sys
 import sysconfig
 import tempfile
 
@@ -107,8 +114,8 @@ def is_decorated():
     if WINDOWS:
         return (
             os.getenv("ANSICON") is not None
-            or "ON" == os.getenv("ConEmuANSI")
-            or "xterm" == os.getenv("Term")
+            or os.getenv("ConEmuANSI") == "ON"  # noqa: SIM112
+            or os.getenv("Term") == "xterm"  # noqa: SIM112
         )
 
     if not hasattr(sys.stdout, "fileno"):
@@ -262,7 +269,21 @@ POST_MESSAGE_CONFIGURE_FISH = """
 You can execute `set -U fish_user_paths {poetry_home_bin} $fish_user_paths`
 """
 
-POST_MESSAGE_CONFIGURE_WINDOWS = """"""
+POST_MESSAGE_CONFIGURE_WINDOWS = """
+You can choose and execute one of the following commands in PowerShell:
+
+A. Append the bin directory to your user environment variable `PATH`:
+
+```
+[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";{poetry_home_bin}", "User")
+```
+
+B. Try to append the bin directory to PATH every when you run PowerShell (>=6 recommended):
+
+```
+echo 'if (-not (Get-Command poetry -ErrorAction Ignore)) {{ $env:Path += ";{poetry_home_bin}" }}' | Out-File -Append $PROFILE
+```
+"""
 
 
 class PoetryInstallationError(RuntimeError):
@@ -278,7 +299,7 @@ class VirtualEnvironment:
         self._bin_path = self._path.joinpath(
             "Scripts" if WINDOWS and not MINGW else "bin"
         )
-        # str is required for compatibility with subprocess run on CPython <= 3.7 on Windows
+        # str is for compatibility with subprocess.run on CPython <= 3.7 on Windows
         self._python = str(
             self._path.joinpath(self._bin_path, "python.exe" if WINDOWS else "python")
         )
@@ -295,7 +316,8 @@ class VirtualEnvironment:
     def make(cls, target: Path) -> "VirtualEnvironment":
         if not sys.executable:
             raise ValueError(
-                "Unable to determine sys.executable. Set PATH to a sane value or set it explicitly with PYTHONEXECUTABLE."
+                "Unable to determine sys.executable. Set PATH to a sane value or set it"
+                " explicitly with PYTHONEXECUTABLE."
             )
 
         try:
@@ -340,7 +362,7 @@ class VirtualEnvironment:
 
         env = cls(target)
 
-        # we do this here to ensure that outdated system default pip does not trigger older bugs
+        # this ensures that outdated system default pip does not trigger older bugs
         env.pip("install", "--disable-pip-version-check", "--upgrade", "pip")
 
         return env
@@ -527,18 +549,20 @@ class Installer:
             mx = self.VERSION_REGEX.match(x)
 
             if mx is None:
-                # the version is not semver, perhaps scm or file, we assume upgrade is supported
+                # the version is not semver, perhaps scm or file
+                # we assume upgrade is supported
                 return True
 
-            vx = tuple(int(p) for p in mx.groups()[:3]) + (mx.group(5),)
+            vx = (*tuple(int(p) for p in mx.groups()[:3]), mx.group(5))
             return vx >= (1, 1, 7)
 
         if version and not _is_self_upgrade_supported(version):
             self._write(
                 colorize(
                     "warning",
-                    f"You are installing {version}. When using the current installer, this version does not support "
-                    f"updating using the 'self update' command. Please use 1.1.7 or later.",
+                    f"You are installing {version}. When using the current installer, "
+                    "this version does not support updating using the 'self update' "
+                    "command. Please use 1.1.7 or later.",
                 )
             )
             if not self._accept_all:
@@ -551,7 +575,7 @@ class Installer:
         except subprocess.CalledProcessError as e:
             raise PoetryInstallationError(
                 return_code=e.returncode, log=e.output.decode()
-            )
+            ) from e
 
         self._write("")
         self.display_post_message(version)
@@ -713,11 +737,12 @@ class Installer:
     def get_windows_path_var(self) -> Optional[str]:
         import winreg
 
-        with winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER) as root:
-            with winreg.OpenKey(root, "Environment", 0, winreg.KEY_ALL_ACCESS) as key:
-                path, _ = winreg.QueryValueEx(key, "PATH")
+        with winreg.ConnectRegistry(
+            None, winreg.HKEY_CURRENT_USER
+        ) as root, winreg.OpenKey(root, "Environment", 0, winreg.KEY_ALL_ACCESS) as key:
+            path, _ = winreg.QueryValueEx(key, "PATH")
 
-                return path
+            return path
 
     def display_post_message_fish(self, version: str) -> None:
         fish_user_paths = subprocess.check_output(
@@ -778,8 +803,8 @@ class Installer:
             mx = self.VERSION_REGEX.match(x)
             my = self.VERSION_REGEX.match(y)
 
-            vx = tuple(int(p) for p in mx.groups()[:3]) + (mx.group(5),)
-            vy = tuple(int(p) for p in my.groups()[:3]) + (my.group(5),)
+            vx = (*tuple(int(p) for p in mx.groups()[:3]), mx.group(5))
+            vy = (*tuple(int(p) for p in my.groups()[:3]), my.group(5))
 
             if vx < vy:
                 return -1
@@ -838,13 +863,6 @@ class Installer:
 
 
 def main():
-    if sys.version_info < (3, 6):
-        sys.stdout.write(
-            colorize("error", "Poetry installer requires Python 3.6 or newer to run!")
-        )
-        # return error code
-        return 1
-
     parser = argparse.ArgumentParser(
         description="Installs the latest (or given) version of poetry"
     )
@@ -930,7 +948,8 @@ def main():
                 text=True,
             )
             installer._write(colorize("error", f"See {path} for error logs."))
-            text = f"{e.log}\nTraceback:\n\n{''.join(traceback.format_tb(e.__traceback__))}"
+            tb = "".join(traceback.format_tb(e.__traceback__))
+            text = f"{e.log}\nTraceback:\n\n{tb}"
             Path(path).write_text(text)
 
         return e.return_code
