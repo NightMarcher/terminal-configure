@@ -5,7 +5,7 @@ description = "Python lab env for Bryan"
 authors = ["BryanLee <bryanlee@126.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.12"
 faker = "*"
 fastapi-efficient-sql = "*"
 jupyterlab = "*"
@@ -18,7 +18,6 @@ tqdm = "*"
 
 [[tool.poetry.source]]
 name = "aliyun"
-default = true
 url = "http://mirrors.aliyun.com/pypi/simple"
 
 
