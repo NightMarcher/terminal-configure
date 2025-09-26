@@ -2,6 +2,7 @@
 # Run `ipython profile create` first, then copy this file to `~/.ipython/profile_default/startup`
 
 false = False
+null = None
 true = True
 Infinity = float("inf")
 NaN = float("nan")
@@ -14,4 +15,3 @@ def desc(obj, filter_prefix="_"):
             continue
         attrs.append(at)
     return sorted(attrs)
-
