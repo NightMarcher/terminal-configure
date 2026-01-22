@@ -15,3 +15,14 @@ def desc(obj, filter_prefix="_"):
             continue
         attrs.append(at)
     return sorted(attrs)
+
+def pids(ids, sep=","):
+    raw_cnt = len(ids)
+    ids_ = set(ids)
+    unique_cnt = len(ids_)
+    print(
+        f"summary => raw_cnt:{raw_cnt}, unique_cnt:{unique_cnt}",
+        sep.join(map(str, ids_)),
+        sep="\n",
+    )
+
