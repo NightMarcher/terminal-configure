@@ -6,8 +6,7 @@ authors = ["BryanLee <bryanlee@126.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.12"
-faker = "*"
-fastapi-efficient-sql = "*"
+aiohttp = "*"
 jupyterlab = "*"
 openpyxl = "*"
 pandas = "*"
