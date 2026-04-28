@@ -1,26 +1,14 @@
-[tool.poetry]
+[project]
 name = "lab"
 version = "0.1.0"
 description = "Python lab env for Bryan"
-authors = ["BryanLee <bryanlee@126.com>"]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "jupyterlab>=4.5.6",
+    "openpyxl>=3.1.5",
+    "pandas>=3.0.2",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-aiohttp = "*"
-jupyterlab = "*"
-openpyxl = "*"
-pandas = "*"
-py-redis = "*"
-requests = "*"
-seaborn = "*"
-tqdm = "*"
-
-[[tool.poetry.source]]
-name = "aliyun"
-url = "http://mirrors.aliyun.com/pypi/simple"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
+[tool.uv]
+index-url = "http://mirrors.aliyun.com/pypi/simple"
