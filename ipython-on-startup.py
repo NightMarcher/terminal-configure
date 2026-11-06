@@ -1,11 +1,13 @@
 # Initialize some object when ipython runs.
 # Run `ipython profile create` first, then copy this file to `~/.ipython/profile_default/startup`
 
+
 false = False
 null = None
 true = True
 Infinity = float("inf")
 NaN = float("nan")
+
 
 def desc(obj, filter_prefix="_"):
     all_attrs = getattr(obj, "__all__", None) or dir(obj)
@@ -16,13 +18,13 @@ def desc(obj, filter_prefix="_"):
         attrs.append(at)
     return sorted(attrs)
 
+
 def pids(ids, sep=","):
     raw_cnt = len(ids)
-    ids_ = set(ids)
-    unique_cnt = len(ids_)
+    ordered_ids = dict.fromkeys(ids).keys()
+    unique_cnt = len(ordered_ids)
     print(
         f"summary => raw_cnt:{raw_cnt}, unique_cnt:{unique_cnt}",
-        sep.join(map(str, ids_)),
+        sep.join(map(str, ordered_ids)),
         sep="\n",
     )
-
